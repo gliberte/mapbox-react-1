@@ -25,6 +25,13 @@ function App() {
       zoom: zoom,
     });
 
+    map.current.on('move',(evt)=>{
+      const {lng,lat} = evt.target
+      setLat(lat)
+      setLng(lng)
+      setZoom(evt.target.getZoom())
+    })
+
     map.current.on("load", () => {
       map.current.addSource("covid-cases-source", {
         type: "geojson",
