@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import cases_country from "./datos/cases_country";
+//import cases_country from "./datos/cases_country";
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -28,7 +28,7 @@ function App() {
     map.current.on("load", () => {
       map.current.addSource("covid-cases-source", {
         type: "geojson",
-        data: cases_country,
+        data: `${process.env.REACT_APP_URL_API}/paises`,
       });
       map.current.addLayer({
         id: "covid-cases-layer",
@@ -38,7 +38,7 @@ function App() {
           "circle-color": "red",
           "circle-radius": [
             "step",
-            ["get", "Confirmed"],
+            ["get", "confirmados"],
             3,100,
             5,500,
             7,1000,
@@ -54,7 +54,7 @@ function App() {
         type:'symbol',
         source:'covid-cases-source',
         layout:{
-          "text-field":'{Confirmed}',
+          "text-field":'{confirmados}',
           "text-offset":[1,-1]
         }
       })
