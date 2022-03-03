@@ -56,6 +56,26 @@ function App() {
           ],
         },
       });
+      //agregamos la nueva fuente de datos
+      map.current.addSource("covid-cases-source-poly",{
+        type:"geojson",
+        data:`${process.env.REACT_APP_URL_API}/paises/poly`
+      })
+      //agregamos la simbologia
+      map.current.addLayer({
+        id:  "covid-cases-poly-layer",
+        type:  "fill",
+        source:  "covid-cases-source-poly",
+        paint: {
+          "fill-color": [
+          "step",
+          ["get", "confirmados"],
+          '#FFD456',
+          500,'#FF7733',1000,'#DB5825',10000,'#BC412B',
+          50000,'#A20021',80000,'#A20021']
+        }
+      });
+      
       map.current.addLayer({
         id:'covid-cases-layer_text',
         type:'symbol',
