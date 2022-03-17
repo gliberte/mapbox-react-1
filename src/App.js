@@ -39,7 +39,7 @@ function App() {
   const [zoom, setZoom] = useState(9);
 
   const setTornadosPorEstado = (data) => {
-    map.current.getSource("tornados_estado").setData(data);
+    map.current.getSource("tornados").setData(data);
   };
 
   const onSetTornadosBounds = (latLngBoundslike) => {

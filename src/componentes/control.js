@@ -19,7 +19,7 @@ const NumFeatures = styled.div`
   }
 `;
 
-const Control = ({ setTornadosPorEstado, onSetTornadosBounds }) => {
+const Control =  ({ setTornadosPorEstado, onSetTornadosBounds }) => {
   const [numFeatures, setNumFeatures] = useState("N/A");
   const data = useDataEstados();
 
