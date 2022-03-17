@@ -19,7 +19,7 @@ const NumFeatures = styled.div`
   }
 `;
 
-export default ({ setTornadosPorEstado, onSetTornadosBounds }) => {
+const Control = ({ setTornadosPorEstado, onSetTornadosBounds }) => {
   const [numFeatures, setNumFeatures] = useState("N/A");
   const data = useDataEstados();
 
@@ -74,3 +74,5 @@ export default ({ setTornadosPorEstado, onSetTornadosBounds }) => {
     </Contenedor>
   );
 };
+
+export default Control;
